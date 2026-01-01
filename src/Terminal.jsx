@@ -152,7 +152,7 @@ export default function Terminal({ activeTab, setActiveTab, theme }) {
             className="terminal-input"
             autoFocus
           />
-          <span className={`cursor ${showCursor ? "visible" : ""}`}>█</span>
+          {/* <span className={`cursor ${showCursor ? "visible" : ""}`}>█</span> */}
         </form>
       </div>
       
