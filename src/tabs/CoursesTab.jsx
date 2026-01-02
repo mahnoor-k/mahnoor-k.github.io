@@ -159,7 +159,7 @@ export default function CoursesTab() {
     <div className="courses-tab">
       <div className="courses-content">
         <div className="courses-prompt">
-          <span className="prompt">mahnoor@site:~$</span> cat courses.txt
+          <span className="prompt">mahnoor@portfolio:~$</span> ls courses/
         </div>
         <div className="courses-list">
           {Object.entries(coursesBySemester).map(([semester, courseList]) => (

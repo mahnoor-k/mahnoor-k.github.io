@@ -41,20 +41,15 @@ export default function Terminal({ activeTab, setActiveTab, theme }) {
     
     switch (trimmedCmd) {
       case "help":
-        output = [
-          "Available commands:",
-          "  help                    - Show this help message",
-          "  cd about              - Navigate to About tab",
-          "  cd experiences        - Navigate to Experiences tab",
-          "  cd projects           - Navigate to Projects tab",
-          "  cd courses            - Navigate to Courses tab",
-          "  cd extracurriculars  - Navigate to Extracurriculars tab",
-          "  cd contact            - Navigate to Contact tab",
-          "  clear                   - Clear terminal history",
-          "",
-          "You can also click on commands above to execute them."
-        ];
-        break;
+        setCommandHistory((prev) => [
+          ...prev,
+          { 
+            type: "output", 
+            text: "help",
+            isHelp: true
+          }
+        ]);
+        return;
       case "cd about":
         setActiveTab("About");
         output = ["Navigating to About tab..."];
@@ -142,7 +137,51 @@ export default function Terminal({ activeTab, setActiveTab, theme }) {
             )}
             {item.type === "output" && (
               <div className="command-output">
-                {Array.isArray(item.text) ? (
+                {item.isHelp ? (
+                  <div className="help-output">
+                    <div className="help-header">Available commands:</div>
+                    <div className="help-command">
+                      <span className="help-cmd-name">help</span>
+                      <span className="help-separator">-</span>
+                      <span className="help-desc">Show this help message</span>
+                    </div>
+                    <div className="help-command">
+                      <span className="help-cmd-name">cd about</span>
+                      <span className="help-separator">-</span>
+                      <span className="help-desc">Navigate to About tab</span>
+                    </div>
+                    <div className="help-command">
+                      <span className="help-cmd-name">cd experiences</span>
+                      <span className="help-separator">-</span>
+                      <span className="help-desc">Navigate to Experiences tab</span>
+                    </div>
+                    <div className="help-command">
+                      <span className="help-cmd-name">cd projects</span>
+                      <span className="help-separator">-</span>
+                      <span className="help-desc">Navigate to Projects tab</span>
+                    </div>
+                    <div className="help-command">
+                      <span className="help-cmd-name">cd courses</span>
+                      <span className="help-separator">-</span>
+                      <span className="help-desc">Navigate to Courses tab</span>
+                    </div>
+                    <div className="help-command">
+                      <span className="help-cmd-name">cd extracurriculars</span>
+                      <span className="help-separator">-</span>
+                      <span className="help-desc">Navigate to Activities tab</span>
+                    </div>
+                    <div className="help-command">
+                      <span className="help-cmd-name">cd contact</span>
+                      <span className="help-separator">-</span>
+                      <span className="help-desc">Navigate to Contact tab</span>
+                    </div>
+                    <div className="help-command">
+                      <span className="help-cmd-name">clear</span>
+                      <span className="help-separator">-</span>
+                      <span className="help-desc">Clear terminal history</span>
+                    </div>
+                  </div>
+                ) : Array.isArray(item.text) ? (
                   item.text.map((line, lineIdx) => (
                     <div key={lineIdx}>{line}</div>
                   ))

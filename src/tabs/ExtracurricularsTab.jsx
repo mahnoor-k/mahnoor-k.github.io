@@ -1,12 +1,31 @@
 const extracurriculars = {
-  organization: "PlexTech",
+  organization: "PlexTech Software Consulting",
   roles: [
     {
       role: "Senior Developer",
-      date: "Fall 2024 - Present"
+      date: "Fall 2025"
     },
     {
       role: "External Vice President",
+      date: "Spring 2025"
+    },
+    {
+      role: "Junior Developer",
+      date: "Fall 2024"
+    },
+    {
+      role: "Curriculum Student",
+      date: "Spring 2024"
+    }
+  ],
+  organization: "Software Products @ Cal",
+  roles: [
+    {
+      role: "Director of Consulting, Project Manager",
+      date: "Fall 2024 - Present"
+    },
+    {
+      role: "Project Manager",
       date: "Spring 2024 - Fall 2024"
     },
     {
@@ -18,6 +37,7 @@ const extracurriculars = {
       date: "Spring 2023 - Fall 2023"
     }
   ]
+  
 };
 
 export default function ExtracurricularsTab() {
@@ -25,7 +45,7 @@ export default function ExtracurricularsTab() {
     <div className="extracurriculars-tab">
       <div className="extracurriculars-content">
         <div className="extracurriculars-prompt">
-          <span className="prompt">mahnoor@site:~$</span> extracurriculars
+          <span className="prompt">mahnoor@portfolio:~$</span> cat extracurricular.txt
         </div>
         <div className="extracurriculars-list">
           <div className="extracurricular-item">

@@ -239,6 +239,7 @@ body.light {
 .terminal-body {
   padding: 12px 16px;
   flex: 1;
+  overflow-x: hidden;
   overflow-y: auto;
   font-size: 13px;
   line-height: 1.5;
@@ -264,6 +265,35 @@ body.light {
   color: var(--text-primary);
   margin-left: 0;
   padding-left: 0;
+}
+
+.help-output {
+  line-height: 1.4;
+}
+
+.help-command {
+  margin-bottom: 2px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.help-cmd-name {
+  color: var(--command-color, #4ec9b0);
+  font-weight: 500;
+  font-family: 'Fira Code', monospace;
+  min-width: 180px;
+}
+
+.help-separator {
+  color: var(--text-secondary);
+  margin: 0 4px;
+}
+
+.help-desc {
+  color: var(--text-secondary);
+  flex: 1;
 }
 
 .terminal-input-form {

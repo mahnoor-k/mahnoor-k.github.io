@@ -54,7 +54,7 @@ export default function App() {
             <span className="dot yellow" />
             <span className="dot green" />
           </div>
-          <div className="window-title">mahnoor@personal-website:~$</div>
+          <div className="window-title">mahnoor@portfolio:~$</div>
           <button className="theme-toggle" onClick={toggleTheme}>
             {theme === "dark" ? "☀️" : "🌙"}
           </button>
