@@ -32,7 +32,7 @@ export default function ProjectsTab() {
     <div className="projects-tab">
       <div className="projects-content">
         <div className="projects-prompt">
-          <span className="prompt">mahnoor@site:~$</span> ls projects/
+          <span className="prompt">mahnoor@personal-website:~$</span> ls projects/
         </div>
         <div className="projects-list">
           {projects.map((project, idx) => (

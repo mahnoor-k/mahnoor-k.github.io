@@ -10,7 +10,7 @@ import ExtracurricularsTab from "./tabs/ExtracurricularsTab.jsx";
 import ContactTab from "./tabs/ContactTab.jsx";
 import "./styles.css";
 
-const tabs = ["Home", "About", "Experience", "Projects", "Courses", "Extracurriculars", "Contact"];
+const tabs = ["Home", "About", "Experiences", "Projects", "Courses", "Extracurriculars", "Contact"];
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("Home");
@@ -30,7 +30,7 @@ export default function App() {
         return <HomeTab />;
       case "About":
         return <AboutTab />;
-      case "Experience":
+      case "Experiences":
         return <ExperienceTab />;
       case "Projects":
         return <ProjectsTab />;
@@ -54,7 +54,7 @@ export default function App() {
             <span className="dot yellow" />
             <span className="dot green" />
           </div>
-          <div className="window-title">mahnoor@site:~$</div>
+          <div className="window-title">mahnoor@personal-website:~$</div>
           <button className="theme-toggle" onClick={toggleTheme}>
             {theme === "dark" ? "☀️" : "🌙"}
           </button>

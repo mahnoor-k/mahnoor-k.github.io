@@ -18,10 +18,10 @@ export default function HomeTab() {
           <span className={`blink-cursor ${showCursor ? "visible" : ""}`}>█</span>
         </h1>
         <p className="home-subtext">
-          I build thoughtful, human-centered software.
+          Computer Science, Data Science, and Environmental Economics @ UC Berkeley.
         </p>
         <div className="home-prompt">
-          <span className="prompt">mahnoor@site:~$</span> welcome
+          <span className="prompt">mahnoor@personal-website:~$</span> welcome
         </div>
       </div>
     </div>

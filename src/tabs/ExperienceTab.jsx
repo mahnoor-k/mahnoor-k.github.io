@@ -24,7 +24,7 @@ export default function ExperienceTab() {
     <div className="experience-tab">
       <div className="experience-content">
         <div className="experience-prompt">
-          <span className="prompt">mahnoor@site:~$</span> experience
+          <span className="prompt">mahnoor@personal-website:~$</span> experiences
         </div>
         <div className="experience-list">
           {experiences.map((exp, idx) => (

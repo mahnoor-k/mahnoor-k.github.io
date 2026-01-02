@@ -44,30 +44,40 @@ export default function Terminal({ activeTab, setActiveTab, theme }) {
         output = [
           "Available commands:",
           "  help                    - Show this help message",
-          "  open projects           - Navigate to Projects tab",
-          "  open courses            - Navigate to Courses tab",
-          "  open contact            - Navigate to Contact tab",
-          "  open extracurriculars  - Navigate to Extracurriculars tab",
+          "  cd about              - Navigate to About tab",
+          "  cd experiences        - Navigate to Experiences tab",
+          "  cd projects           - Navigate to Projects tab",
+          "  cd courses            - Navigate to Courses tab",
+          "  cd extracurriculars  - Navigate to Extracurriculars tab",
+          "  cd contact            - Navigate to Contact tab",
           "  clear                   - Clear terminal history",
           "",
           "You can also click on commands above to execute them."
         ];
         break;
-      case "open projects":
+      case "cd about":
+        setActiveTab("About");
+        output = ["Navigating to About tab..."];
+        break;
+      case "cd experiences":
+        setActiveTab("Experiences");
+        output = ["Navigating to Experiences tab..."];
+        break;
+      case "cd projects":
         setActiveTab("Projects");
         output = ["Navigating to Projects tab..."];
         break;
-      case "open courses":
+      case "cd courses":
         setActiveTab("Courses");
         output = ["Navigating to Courses tab..."];
         break;
-      case "open contact":
-        setActiveTab("Contact");
-        output = ["Navigating to Contact tab..."];
-        break;
-      case "open extracurriculars":
+      case "cd extracurriculars":
         setActiveTab("Extracurriculars");
         output = ["Navigating to Extracurriculars tab..."];
+        break;
+      case "cd contact":
+        setActiveTab("Contact");
+        output = ["Navigating to Contact tab..."];
         break;
       case "clear":
         setCommandHistory([]);
@@ -96,10 +106,12 @@ export default function Terminal({ activeTab, setActiveTab, theme }) {
 
   const availableCommands = [
     "help",
-    "open projects",
-    "open courses",
-    "open contact",
-    "open extracurriculars",
+    "cd about",
+    "cd experiences",
+    "cd projects",
+    "cd courses",
+    "cd extracurriculars",
+    "cd contact",
     "clear"
   ];
 
@@ -113,7 +125,7 @@ export default function Terminal({ activeTab, setActiveTab, theme }) {
         {commandHistory.length === 0 && (
           <div className="terminal-welcome">
             <div className="terminal-line">
-              <span className="prompt">mahnoor@site:~$</span> Type <span 
+              <span className="prompt">mahnoor@portfolio:~$</span> Type <span 
                 className="clickable-command" 
                 onClick={() => handleClickableCommand("help")}
               >help</span> to see available commands.
@@ -125,7 +137,7 @@ export default function Terminal({ activeTab, setActiveTab, theme }) {
           <div key={idx} className="terminal-line">
             {item.type === "command" && (
               <>
-                <span className="prompt">mahnoor@site:~$</span> {item.text}
+                <span className="prompt">mahnoor@portfolio:~$</span> {item.text}
               </>
             )}
             {item.type === "output" && (
@@ -143,7 +155,7 @@ export default function Terminal({ activeTab, setActiveTab, theme }) {
         ))}
         
         <form onSubmit={handleSubmit} className="terminal-input-form">
-          <span className="prompt">mahnoor@site:~$</span>
+          <span className="prompt">mahnoor@portfolio:~$</span>
           <input
             ref={inputRef}
             type="text"
@@ -152,7 +164,7 @@ export default function Terminal({ activeTab, setActiveTab, theme }) {
             className="terminal-input"
             autoFocus
           />
-          {/* <span className={`cursor ${showCursor ? "visible" : ""}`}>█</span> */}
+          <span className={`cursor ${showCursor ? "visible" : ""}`}>█</span>
         </form>
       </div>
       
