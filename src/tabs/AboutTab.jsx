@@ -8,8 +8,7 @@ export default function AboutTab() {
         <div className="about-text">
           <p>
             I’m a student at UC Berkeley studying Computer Science and Environmental Economics, 
-            with a minor in Data Science. I’m driven by curiosity and creativity, always eager 
-            to learn from scratch and build something meaningful. Growing up adapting to new 
+            with a minor in Data Science. Growing up adapting to new 
             environments taught me how powerful the right tools and support systems can be, a 
             perspective that continues to shape how I think about and build software.
           </p>

@@ -237,7 +237,7 @@ body.light {
 }
 
 .terminal-body {
-  padding: 12px 24px;
+  padding: 12px 10px;
   flex: 1;
   overflow-x: hidden;
   overflow-y: auto;
@@ -264,7 +264,7 @@ body.light {
 .command-output {
   color: var(--text-primary);
   margin-left: 0;
-  padding-left: 0;
+  padding-left: 10px;
 }
 
 .help-output {
