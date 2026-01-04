@@ -237,7 +237,7 @@ body.light {
 }
 
 .terminal-body {
-  padding: 12px 16px;
+  padding: 12px 24px;
   flex: 1;
   overflow-x: hidden;
   overflow-y: auto;
@@ -455,11 +455,7 @@ body.light {
 }
 
 .experience-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
   margin-bottom: 12px;
-  flex-wrap: wrap;
 }
 
 .experience-role {
@@ -467,10 +463,19 @@ body.light {
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.3px;
+  margin-bottom: 8px;
+}
+
+.experience-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .experience-org {
-  font-size: 17px;
+  font-size: 16px;
   color: var(--accent);
   font-weight: 500;
 }
@@ -478,7 +483,6 @@ body.light {
 .experience-date {
   font-size: 13px;
   color: var(--text-secondary);
-  margin-left: auto;
   background: var(--bg-secondary, #1e1e1e);
   padding: 4px 10px;
   border-radius: 4px;
@@ -654,7 +658,6 @@ body.light {
 
 .course-header {
   padding: 16px;
-  cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -662,8 +665,16 @@ body.light {
   transition: background-color 0.2s ease;
 }
 
-.course-header:hover {
+.course-header.expandable {
+  cursor: pointer;
+}
+
+.course-header.expandable:hover {
   background: var(--bg-secondary);
+}
+
+.course-card.no-expand .course-header {
+  cursor: default;
 }
 
 .course-name {

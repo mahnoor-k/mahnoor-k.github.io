@@ -2,22 +2,34 @@ import { useState } from "react";
 
 const projects = [
   {
+    title: "Pantry Pal",
+    description: "A web app that generates recipes from users’ fridge ingredients using AI, helping reduce food waste and simplify meal planning.",
+    tech: ["Typescript", "React.js", "Express.js", "Node.js", "Material UI", "Cohere"],
+    impact: ""
+  },
+  {
+    title: "Stan 4 Sustainability",
+    description: "A web platform that lets users offset celebrities’ carbon footprints by tracking eco-friendly actions, visualizing collective progress through interactive dashboards.",
+    tech: ["Typescript", "React.js", "Express.js", "Node.js", "Climatiq", "OpenFoodFacts", "OpenSky"],
+    impact: ""
+  },
+  {
     title: "Warn Map",
-    description: "A full-stack safety visualization tool that helps communities track and visualize safety incidents. Built with real-time data updates and interactive mapping features.",
-    tech: ["React", "Node.js", "MongoDB", "Mapbox API"],
-    impact: "Helped local communities make data-driven decisions about safety and security."
+    description: "A full-stack safety visualization tool that helps track and visualize safety incidents. Built with real-time data updates and interactive mapping features.",
+    tech: ["Typescript", "React.js", "Express.js", "Node.js", "MongoDB"],
+    impact: ""
+  },
+  {
+    title: "Campus Wifi Monitor",
+    description: "A WiFi monitoring dashboard that lets users submit, store, and visualize real-time WiFi signal strength across UC Berkeley’s campus.",
+    tech: ["Typescript", "React.js", "Express.js", "Material UI", "Leaflet.js"],
+    impact: ""
   },
   {
     title: "We Hear You",
     description: "A Deaf awareness and ASL education platform designed to bridge communication gaps. Features interactive lessons, video tutorials, and community forums.",
-    tech: ["React", "Firebase", "WebRTC", "CSS3"],
-    impact: "Increased ASL learning accessibility for over 500+ users in the first month."
-  },
-  {
-    title: "TaskFlow",
-    description: "A productivity application that combines task management with time tracking. Features intuitive drag-and-drop interfaces and detailed analytics.",
-    tech: ["React", "TypeScript", "Express", "PostgreSQL"],
-    impact: "Improved team productivity by 30% through better task organization and time insights."
+    tech: ["HTML", "CSS", "Javascript"],
+    impact: ""
   }
 ];
 
@@ -32,7 +44,7 @@ export default function ProjectsTab() {
     <div className="projects-tab">
       <div className="projects-content">
         <div className="projects-prompt">
-          <span className="prompt">mahnoor@personal-website:~$</span> ls projects/
+          <span className="prompt">mahnoor@portfolio:~$</span> ls projects/
         </div>
         <div className="projects-list">
           {projects.map((project, idx) => (
@@ -64,9 +76,9 @@ export default function ProjectsTab() {
                   </div>
                 </div>
                 
-                <div className="project-impact">
+                {/* <div className="project-impact">
                   <strong>Impact:</strong> {project.impact}
-                </div>
+                </div> */}
               </div>
             </div>
           ))}

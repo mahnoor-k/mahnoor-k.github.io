@@ -1,47 +1,78 @@
 import { useState } from "react";
 
 const coursesBySemester = {
-  "Fall 2024": [
+  "Fall 2025": [
     {
-      name: "Data Structures & Algorithms",
+      name: "CS 161: Computer Security",
       projects: [
         {
           title: "Graph Traversal Visualizer",
           description: "Interactive visualization tool for BFS and DFS algorithms with step-by-step animation."
         },
-        {
-          title: "Sorting Algorithm Analyzer",
-          description: "Performance comparison tool for various sorting algorithms with complexity analysis."
-        }
       ],
-      studyGuides: [
-        {
-          title: "Midterm Study Guide",
-          link: "#"
-        },
-        {
-          title: "Final Exam Review",
-          link: "#"
-        }
-      ]
+      studyGuides: []
     },
     {
-      name: "Software Engineering",
+      name: "CS 61C: Great Ideas of Computer Architecture (Machine Structures)",
+      projects: [],
+      studyGuides: []
+    },
+    {
+      name: "CS 194: Decentralized Finance",
+      projects: [],
+      studyGuides: []
+    },
+    {
+      name: "ENVECON C101: Environmental Economics",
+      projects: [],
+      studyGuides: []
+    },
+  ],
+  "Summer 2025": [
+    {
+      name: "ENVECON 176: Climate Change Economics",
+      projects: [],
+      studyGuides: []
+    },
+    {
+      name: "DIGHUM 100: Theory and Method in the Digital Humanities",
+      projects: [],
+      studyGuides: []
+    },
+    {
+      name: "NUSCTX W104: Food, Culture, and the Environment AC",
+      projects: [],
+      studyGuides: []
+    },
+    {
+      name: "UGIS W158: Global Citizenship",
+      projects: [],
+      studyGuides: []
+    },
+    {
+      name: "HISTORY N100G: Special Topics in History: Study Abroad",
+      projects: [],
+      studyGuides: []
+    },
+  ],
+  "Spring 2025": [
+    {
+      name: "EDUC 260: Machine Learning in Education",
       projects: [
         {
-          title: "Team Project Management System",
-          description: "Full-stack application for managing software development projects with Git integration."
-        }
+          title: "Graph Traversal Visualizer",
+          description: "Interactive visualization tool for BFS and DFS algorithms with step-by-step animation."
+        },
       ],
-      studyGuides: [
-        {
-          title: "Design Patterns Cheat Sheet",
-          link: "#"
-        }
-      ]
+      studyGuides: []
     },
     {
-      name: "Database Systems",
+      name: "ENVECON C118: Applied Econometrics",
+      projects: [],
+      studyGuides: []
+    },
+    {
+      name: "CIVENG 93: Engineering Data Analysis",
       projects: [
         {
           title: "E-commerce Database Design",
@@ -50,10 +81,56 @@ const coursesBySemester = {
       ],
       studyGuides: [
         {
-          title: "SQL Query Reference",
+          title: "Final Cheatsheet",
           link: "#"
         }
       ]
+    },
+    {
+      name: "UGBA 88: Data & Decisions",
+      projects: [],
+      studyGuides: []
+    },
+    {
+      name: "UGBA 102A: Financial Accounting",
+      projects: [],
+      studyGuides: []
+    },
+    {
+      name: "ECON 1: Introduction to Economics",
+      projects: [],
+      studyGuides: []
+    },
+  ],
+  "Fall 2024": [
+    {
+      name: "CS 70: Discrete Mathematics & Probability Theory",
+      projects: [],
+      studyGuides: [
+        {
+          title: "Midterm Cheatsheet",
+          link: "#"
+        },
+        {
+          title: "Final Cheatsheet",
+          link: "#"
+        }
+      ]
+    },
+    {
+      name: "CS 198: Web Development",
+      projects: [],
+      studyGuides: []
+    },
+    {
+      name: "ASAMST 128AC: Muslims in America",
+      projects: [],
+      studyGuides: []
+    },
+    {
+      name: "GLOBAL 173: International Human Rights",
+      projects: [],
+      studyGuides: []
     }
   ],
   "Spring 2024": [
@@ -67,26 +144,39 @@ const coursesBySemester = {
       ],
       studyGuides: [
         {
-          title: "Systems Architecture Notes",
+          title: "Midterm 1 Cheatsheet",
+          link: "#"
+        },
+        {
+          title: "Midterm 2 Cheatsheet",
+          link: "#"
+        },
+        {
+          title: "Final Cheatsheet",
           link: "#"
         }
       ]
     },
     {
-      name: "Data C100: Principles & Techniques of Data Science",
+      name: "DATA C100: Principles & Techniques of Data Science",
       projects: [
         {
           title: "Image Classification Model",
           description: "CNN-based classifier trained on CIFAR-10 dataset with 85% accuracy."
         }
       ],
-      studyGuides: [
-        {
-          title: "ML Concepts Summary",
-          link: "#"
-        }
-      ]
+      studyGuides: []
     },
+    {
+      name: "MATH 54: Linear Algebra",
+      projects: [],
+      studyGuides: []
+    },
+    {
+      name: "NUSCTX 11: Introduction to Toxicology",
+      projects: [],
+      studyGuides: []
+    }
   ],
   "Fall 2023": [
     {
@@ -99,38 +189,49 @@ const coursesBySemester = {
       ],
       studyGuides: [
         {
-          title: "OS Concepts Review",
+          title: "Midterm 1 Cheatsheet",
+          link: "#"
+        },
+        {
+          title: "Midterm 2 Cheatsheet",
+          link: "#"
+        },
+        {
+          title: "Final Cheatsheet",
           link: "#"
         }
       ]
     },
     {
-      name: "Data 8: Foundations of Data Science",
+      name: "DATA 8: Foundations of Data Science",
       projects: [
         {
           title: "Interactive Dashboard",
           description: "Real-time data visualization dashboard using D3.js and React."
         }
       ],
-      studyGuides: [
-        {
-          title: "Visualization Techniques",
-          link: "#"
-        }
-      ]
+      studyGuides: []
     },
     {
-      name: "Math 1B: Calculus",
+      name: "MATH 1B: Calculus",
       projects: [],
       studyGuides: [
         {
-          title: "Linear Algebra Formula Sheet",
+          title: "Midterm 1 Cheatsheet",
+          link: "#"
+        },
+        {
+          title: "Midterm 2 Cheatsheet",
+          link: "#"
+        },
+        {
+          title: "Final Cheatsheet",
           link: "#"
         }
       ]
     },
     {
-      name: "Italian R5B: Reading and Composition",
+      name: "ITALIAN R5B: Reading and Composition",
       projects: [],
       studyGuides: []
     },
@@ -160,18 +261,24 @@ export default function CoursesTab() {
                 {courseList.map((course, idx) => {
                   const courseKey = `${semester}-${idx}`;
                   const isExpanded = expandedCourse === courseKey;
+                  const hasProjects = course.projects && course.projects.length > 0;
+                  const hasStudyGuides = course.studyGuides && course.studyGuides.length > 0;
+                  const isExpandable = hasProjects || hasStudyGuides;
+                  
                   return (
-                    <div key={idx} className={`course-card ${isExpanded ? "expanded" : ""}`}>
+                    <div key={idx} className={`course-card ${isExpanded ? "expanded" : ""} ${!isExpandable ? "no-expand" : ""}`}>
                       <div 
-                        className="course-header"
-                        onClick={() => toggleCourse(semester, idx)}
+                        className={`course-header ${isExpandable ? "expandable" : ""}`}
+                        onClick={isExpandable ? () => toggleCourse(semester, idx) : undefined}
                       >
                         <span className="course-name">
-                          {isExpanded ? "📂" : "📁"} {course.name}
+                          {isExpandable ? (isExpanded ? "📂" : "📁") : ""} {course.name}
                         </span>
-                        <span className="course-toggle">
-                          {isExpanded ? "−" : "+"}
-                        </span>
+                        {isExpandable && (
+                          <span className="course-toggle">
+                            {isExpanded ? "−" : "+"}
+                          </span>
+                        )}
                       </div>
                       
                       <div className={`course-details ${isExpanded ? "visible" : ""}`}>

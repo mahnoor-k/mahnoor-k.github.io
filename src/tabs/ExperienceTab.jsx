@@ -30,9 +30,11 @@ export default function ExperienceTab() {
           {experiences.map((exp, idx) => (
             <div key={idx} className="experience-item">
               <div className="experience-header">
-                <span className="experience-role">{exp.role}</span>
-                <span className="experience-org">@ {exp.organization}</span>
-                <span className="experience-date">{exp.date}</span>
+                <div className="experience-role">{exp.role}</div>
+                <div className="experience-meta">
+                  <span className="experience-org">{exp.organization}</span>
+                  <span className="experience-date">{exp.date}</span>
+                </div>
               </div>
               <p className="experience-description">{exp.description}</p>
             </div>
