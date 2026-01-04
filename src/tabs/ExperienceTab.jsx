@@ -1,8 +1,8 @@
 const experiences = [
   {
-    role: "Software Engineering Intern",
-    organization: "UC Berkeley",
-    date: "Summer 2024",
+    role: "Software Engineer (Contract)",
+    organization: "Lucid Motors",
+    date: "Oct 2025 - Jan 2026",
     description: "Built internal tools to support staff engagement and streamline workflows. Worked with React, Node.js, and MongoDB to deliver scalable solutions."
   },
   {

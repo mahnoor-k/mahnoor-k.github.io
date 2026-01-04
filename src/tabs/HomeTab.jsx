@@ -21,7 +21,7 @@ export default function HomeTab() {
           Computer Science, Data Science, and Environmental Economics @ UC Berkeley.
         </p>
         <div className="home-prompt">
-          <span className="prompt">mahnoor@personal-website:~$</span> welcome
+          <span className="prompt">mahnoor@portfolio:~$</span> welcome
         </div>
       </div>
     </div>

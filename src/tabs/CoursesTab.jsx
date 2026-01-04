@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const coursesBySemester = {
-  "Spring 2024": [
+  "Fall 2024": [
     {
       name: "Data Structures & Algorithms",
       projects: [
@@ -56,9 +56,9 @@ const coursesBySemester = {
       ]
     }
   ],
-  "Fall 2023": [
+  "Spring 2024": [
     {
-      name: "Computer Systems & Architecture",
+      name: "CS 61B: Data Structures",
       projects: [
         {
           title: "Cache Simulator",
@@ -73,7 +73,7 @@ const coursesBySemester = {
       ]
     },
     {
-      name: "Machine Learning",
+      name: "Data C100: Principles & Techniques of Data Science",
       projects: [
         {
           title: "Image Classification Model",
@@ -87,25 +87,10 @@ const coursesBySemester = {
         }
       ]
     },
-    {
-      name: "Human-Computer Interaction",
-      projects: [
-        {
-          title: "Usability Testing Study",
-          description: "Conducted user research and redesigned mobile app interface based on findings."
-        }
-      ],
-      studyGuides: [
-        {
-          title: "HCI Principles Guide",
-          link: "#"
-        }
-      ]
-    }
   ],
-  "Spring 2023": [
+  "Fall 2023": [
     {
-      name: "Operating Systems",
+      name: "CS 61A: The Structure and Interpretation of Computer Programs",
       projects: [
         {
           title: "Process Scheduler",
@@ -120,7 +105,7 @@ const coursesBySemester = {
       ]
     },
     {
-      name: "Data Visualization",
+      name: "Data 8: Foundations of Data Science",
       projects: [
         {
           title: "Interactive Dashboard",
@@ -135,7 +120,7 @@ const coursesBySemester = {
       ]
     },
     {
-      name: "Linear Algebra",
+      name: "Math 1B: Calculus",
       projects: [],
       studyGuides: [
         {
@@ -143,7 +128,13 @@ const coursesBySemester = {
           link: "#"
         }
       ]
-    }
+    },
+    {
+      name: "Italian R5B: Reading and Composition",
+      projects: [],
+      studyGuides: []
+    },
+
   ]
 };
 
