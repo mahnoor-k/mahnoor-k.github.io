@@ -87,6 +87,15 @@ const extracurriculars = [
         date: "Fall 2024-Spring 2025"
       },
     ]
+  },
+  {
+    organization: "UC Berkeley Office of Executive Vice President",
+    roles: [
+      {
+        role: "Professional Development Intern",
+        date: "Fall 2023"
+      },
+    ]
   }
 ];
 

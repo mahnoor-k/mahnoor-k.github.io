@@ -15,7 +15,7 @@ export default function AboutTab() {
           <p>
             Through my coursework, I’ve built a strong foundation in data structures, algorithms, 
             machine learning, and more. I’m interested in software development and 
-            machine learning, where I enjoy building solutions that create impactful user experiences.
+            machine learning, and how they can create impact.
           </p>
         </div>
       </div>
