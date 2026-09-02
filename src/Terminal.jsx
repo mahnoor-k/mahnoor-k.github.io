@@ -62,6 +62,12 @@ export default function Terminal({ activeTab, setActiveTab, theme }) {
         setActiveTab("Projects");
         output = ["Navigating to Projects tab..."];
         break;
+      case "cd cs180":
+      case "cd cs-180":
+        window.location.hash = "#/cs180";
+        setActiveTab("CS 180");
+        output = ["Navigating to CS 180 portfolio..."];
+        break;
       case "cd courses":
         setActiveTab("Courses");
         output = ["Navigating to Courses tab..."];
@@ -104,6 +110,7 @@ export default function Terminal({ activeTab, setActiveTab, theme }) {
     "cd about",
     "cd experiences",
     "cd projects",
+    "cd cs180",
     "cd courses",
     "cd extracurriculars",
     "cd contact",
@@ -159,6 +166,11 @@ export default function Terminal({ activeTab, setActiveTab, theme }) {
                       <span className="help-cmd-name">cd projects</span>
                       <span className="help-separator">-</span>
                       <span className="help-desc">Navigate to Projects tab</span>
+                    </div>
+                    <div className="help-command">
+                      <span className="help-cmd-name">cd cs180</span>
+                      <span className="help-separator">-</span>
+                      <span className="help-desc">Open the CS 180 portfolio</span>
                     </div>
                     <div className="help-command">
                       <span className="help-cmd-name">cd courses</span>

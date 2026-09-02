@@ -1,6 +1,19 @@
 import { useState } from "react";
 
 const coursesBySemester = {
+  "Fall 2026": [
+    {
+      name: "CS 180: Intro to Computer Vision and Computation Photography",
+      projects: [
+        {
+          title: "CS 180 Portfolio",
+          description: "CS 180 computer vision and computational photography portfolio.",
+          link: "#/cs180"
+        },
+      ],
+      studyGuides: []
+    },
+  ],
   "Fall 2025": [
     {
       name: "CS 161: Computer Security",
@@ -367,7 +380,13 @@ export default function CoursesTab() {
                             <ul className="course-projects">
                               {course.projects.map((project, projIdx) => (
                                 <li key={projIdx} className="course-project-item">
-                                  <span className="project-name">{project.title}</span>
+                                  {project.link ? (
+                                    <a href={project.link} className="project-name course-project-link">
+                                      {project.title} →
+                                    </a>
+                                  ) : (
+                                    <span className="project-name">{project.title}</span>
+                                  )}
                                   <p className="project-desc">{project.description}</p>
                                 </li>
                               ))}
