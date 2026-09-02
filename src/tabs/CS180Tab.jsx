@@ -4,6 +4,9 @@ const projects = [
   { id: 0, title: "Becoming Friends with Your Camera", status: "In progress" },
 ];
 
+const projectAsset = (filename) =>
+  `${import.meta.env.BASE_URL}assets/cs180/project0/${filename}`;
+
 const getRoute = () => {
   const match = window.location.hash.match(/^#\/cs180\/project-(\d+)$/);
   return match ? Number(match[1]) : null;
@@ -55,14 +58,14 @@ function ProjectZero({ onBack }) {
         <div className="cs180-comparison-grid">
           <figure className="cs180-photo-card">
             <img
-              src="/assets/cs180/project0/selfie-close-up.jpeg"
+              src={projectAsset("selfie-close-up.jpeg")}
               alt="Close-up portrait demonstrating wide-angle perspective distortion"
             />
             <figcaption>Close-up portrait</figcaption>
           </figure>
           <figure className="cs180-photo-card">
             <img
-              src="/assets/cs180/project0/selfie-stepped-back.jpeg"
+              src={projectAsset("selfie-stepped-back.jpeg")}
               alt="Portrait taken from farther away with a longer focal length"
             />
             <figcaption>Stepped-back, zoomed-in portrait</figcaption>
@@ -76,20 +79,24 @@ function ProjectZero({ onBack }) {
           <h2>Architectural perspective compression</h2>
           <p>
             Taking the picture from farther away, Wheeler looks flatter, while moving closer
-            and zooming out restores more depth in the photo.
+            and zooming out restores more depth in the photo. In the farther, zoomed in picture,
+            the relative difference between the camera’s distance to the nearer and farther parts of 
+            Wheeler is smaller, so objects at different depths appear more similar in size.
+            In the closer, zoomed-out image, nearby features seems larger relative to the further  
+            features, producing a stronger sense of depth and perspective. 
           </p>
         </div>
         <div className="cs180-comparison-grid">
           <figure className="cs180-photo-card">
             <img
-              src="/assets/cs180/project0/architecture-far-zoomed.jpeg"
+              src={projectAsset("architecture-far-zoomed.jpeg")}
               alt="Wheeler hall photographed from farther away with a longer focal length"
             />
             <figcaption>Far + zoomed in</figcaption>
           </figure>
           <figure className="cs180-photo-card">
             <img
-              src="/assets/cs180/project0/architecture-near-wide.jpeg"
+              src={projectAsset("architecture-near-wide.jpeg")}
               alt="Wheeler hall photographed from nearby with a wider field of view"
             />
             <figcaption>Near + zoomed out</figcaption>
@@ -108,7 +115,7 @@ function ProjectZero({ onBack }) {
         </div>
         <figure className="cs180-photo-card cs180-gif-card">
           <img
-            src="/assets/cs180/project0/dolly-zoom.gif"
+            src={projectAsset("dolly-zoom.gif")}
             alt="Four-frame dolly zoom animation"
           />
           <figcaption>Dolly zoom sequence</figcaption>
