@@ -6,6 +6,9 @@ const singleScaleResults = [
   { name: "Tobolsk", file: "tobolsk", green: "(3, 3)", red: "(3, 6)" },
 ];
 const multiScaleResults = [
+  { name: "Cathedral", file: "cathedral", green: "(2, 5)", red: "(3, 12)" },
+  { name: "Monastery", file: "monastery", green: "(2, -3)", red: "(2, 3)" },
+  { name: "Tobolsk", file: "tobolsk", green: "(3, 3)", red: "(3, 6)" },
   {
     "name": "Church",
     "file": "church",
@@ -176,7 +179,7 @@ export default function ProjectOne({ onBack }) {
             <li><strong>./: divide each adjusted value by that number.</strong> This puts both images on the same scale. If one image has twice the differences from its average, its denominator also doubles, so the normalized values stay the same.</li>
                       <li><strong>·: take the dot product to get the NCC score.</strong> After flattening both normalized images into lists in the same pixel order, I multiply matching values and add the results. Matching light areas and matching dark areas contribute positively, while disagreements contribute negatively. A score closer to 1 means a closer match between the normalized patterns. The algorithm keeps the shift with the highest score.</li>
           </ul>
-          <p>I also leave the edges out of the comparison. The scans have borders, and shifting with wrapping can bring pixels from one edge around to the opposite side. To keep those pixels from affecting the score, I ignore a margin of 10% on each axis, using at least 16 pixels. Every shift is judged using the same interior area. The full image is still kept in the saved result.</p>
+          <p>I also leave the edges out of the comparison. The scans have borders, and shifting with wrapping can bring pixels from one edge around to the opposite side. To keep those pixels from affecting the score, I ignore a margin of 10% on each axis. Every shift is judged using the same interior area. The full image is still kept in the saved result.</p>
         </div>
         <div className="p1-single-examples">
           {singleScaleResults.map(({ name, file, green, red }) => (
@@ -209,6 +212,8 @@ export default function ProjectOne({ onBack }) {
           <h2>Multi-scale pyramid alignment</h2>
           <p>The small JPEGs are a good starting point, but the large TIFFs make the search much harder. A 15-pixel window might not reach the correct alignment, while testing a much wider range of shifts at full resolution would take too long. Instead, I use an image pyramid, repeatedly shrinking each image to half its size. Large shifts become smaller at these lower resolutions, making them easier and faster to find.</p>
           <p>The algorithm keeps shrinking the images until the longest side is 256 pixels or less. At this smallest level, it uses NCC to find a rough alignment. It then returns to the next larger version, which is roughly twice the size, and doubles the estimated shift. For example, a shift of 5 pixels at the smaller size becomes a starting estimate of 10 pixels at the larger size. From there, it searches within two pixels of that estimate horizontally and vertically to refine the match. This repeats until it reaches the original resolution. Each level builds on the previous estimate, avoiding a wide search at full size.</p>
+          <p>For example, a 1024-pixel-wide image can shrink to 512 and then 256 pixels. The 256-pixel call finds the initial shift with a ±15-pixel exhaustive search. When it returns, the 512-pixel call doubles that shift and refines it. The 1024-pixel call then doubles the newly refined shift and refines once more. Each earlier call is waiting for its smaller call to finish, so this continues back to the original size and then stops. The images keep their proportions; these sizes are just an example.</p>
+          <p>The refinement window includes −2, −1, 0, 1, and 2 on each axis, giving 25 candidates per channel at each larger level. I use anti-aliasing when shrinking, and score an interior region whose margins are at least 10% or large enough to exclude pixels wrapped by the candidate shifts. I also rerun this pyramid algorithm on the three jpegs and get the same result as before</p>
         </div>
         <PyramidResults results={multiScaleResults} group="pyramid" />
       </section>
@@ -216,7 +221,7 @@ export default function ProjectOne({ onBack }) {
         <div className="cs180-section-number">04</div>
         <div className="cs180-section-copy">
           <h2>Additional collection images</h2>
-          <p>Bridge, Clothing, and Sitting Woman provide three additional examples. Their computed offsets and saved results are shown below.</p>
+          <p>Here are three additional examples. Their computed offsets and saved results are shown below.</p>
         </div>
         <PyramidResults results={additionalResults} group="additional" />
       </section>
@@ -231,3 +236,4 @@ export default function ProjectOne({ onBack }) {
     </article>
   );
 }
+
