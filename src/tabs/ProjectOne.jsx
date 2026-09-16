@@ -162,15 +162,15 @@ export default function ProjectOne({ onBack }) {
           <h2>Single-scale Alignment</h2>
           <p>For the smaller JPEG images, I try every possible shift within a small area. After splitting the scan into blue, green, and red channels, I keep blue fixed and move green and red separately. Each channel can move up to 15 pixels left, right, up, or down. That gives 31 horizontal positions and 31 vertical positions, or 961 combinations to check. Trying all of them is called <strong>exhaustive search</strong>.</p>
           <p>But how does the algorithm know which shift looks best? I use <strong>normalized cross-correlation (NCC)</strong> to compare the pattern of light and dark areas in the two channels. The same scene can be brighter through one filter than another, so comparing the pixel values directly can be misleading. NCC adjusts for overall brightness and contrast differences before comparing the patterns. The shift with the highest score is the one the algorithm chooses.</p>
-          <p className="p1-formula">(image1 − mean(image1)) ./ ‖image1 − mean(image1)‖<br />(image2 − mean(image2)) ./ ‖image2 − mean(image2)‖</p>
+          <p className="p1-formula">normalized_image1 = (image1 − mean(image1)) ./ ‖image1 − mean(image1)‖<br />normalized_image2 = (image2 − mean(image2)) ./ ‖image2 − mean(image2)‖<br /><br />NCC = normalized_image1 · normalized_image2</p>
           <p>Here’s what each part of the formula does. The same steps are applied to both images:</p>
           <ul className="p1-ncc-steps">
             <li><strong>mean(image1): find the average brightness.</strong> Add all the pixel values and divide by the number of pixels. This gives a baseline for deciding which parts are light or dark.</li>
             <li><strong>image1 − mean(image1): subtract that baseline.</strong> A pixel brighter than the average becomes positive, and a darker pixel becomes negative. Now the values describe the light and dark pattern instead of the image’s overall brightness.</li>
             <li><strong>‖image1 − mean(image1)‖: measure the size of those differences.</strong> Square the adjusted values, add them, and take the square root. Stronger differences between light and dark produce a larger number.</li>
             <li><strong>./: divide each adjusted value by that number.</strong> This puts both images on the same scale. If one image has twice the differences from its average, its denominator also doubles, so the normalized values stay the same.</li>
+                      <li><strong>·: take the dot product to get the NCC score.</strong> After flattening both normalized images into lists in the same pixel order, I multiply matching values and add the results. Matching light areas and matching dark areas contribute positively, while disagreements contribute negatively. A score closer to 1 means a closer match between the normalized patterns. The algorithm keeps the shift with the highest score.</li>
           </ul>
-          <p>Finally, I multiply the normalized values at matching pixel positions and add the results. This is the dot product, which gives the NCC score. Matching light areas and matching dark areas contribute positively, while disagreements contribute negatively. The shift with the highest score is the best match.</p>
           <p>I also leave the edges out of the comparison. The scans have borders, and shifting with wrapping can bring pixels from one edge around to the opposite side. To keep those pixels from affecting the score, I ignore a margin of 10% on each axis, using at least 16 pixels. Every shift is judged using the same interior area. The full image is still kept in the saved result.</p>
         </div>
         <div className="p1-single-examples">
@@ -202,8 +202,8 @@ export default function ProjectOne({ onBack }) {
         <div className="cs180-section-number">03</div>
         <div className="cs180-section-copy">
           <h2>Multi-scale pyramid alignment</h2>
-          <p>The small JPEGs are a good starting point, but the large TIFFs make the search much harder. Searching every possible shift at full resolution would take too long, and a 15-pixel window might not reach the correct alignment. Instead, I use an image pyramid: a series of smaller versions of the same image. When the image shrinks, the distance between matching features shrinks too, making large shifts easier to find.</p>
-          <p>The alignment starts with the smallest version, where the algorithm searches for the best match using NCC. It then moves to the next larger version, scales up the estimated shift, and searches nearby to improve it. This repeats until it reaches the original resolution. Instead of starting over at every size, each step builds on the previous estimate. The results below show the images before and after alignment, along with the green and red offsets relative to blue.</p>
+          <p>The small JPEGs are a good starting point, but the large TIFFs make the search much harder. A 15-pixel window might not reach the correct alignment, while testing a much wider range of shifts at full resolution would take too long. Instead, I use an image pyramid, repeatedly shrinking each image to half its size. Large shifts become smaller at these lower resolutions, making them easier and faster to find.</p>
+          <p>The algorithm keeps shrinking the images until the longest side is 256 pixels or less. At this smallest level, it uses NCC to find a rough alignment. It then returns to the next larger version, which is roughly twice the size, and doubles the estimated shift. For example, a shift of 5 pixels at the smaller size becomes a starting estimate of 10 pixels at the larger size. From there, it searches within two pixels of that estimate horizontally and vertically to refine the match. This repeats until it reaches the original resolution. Each level builds on the previous estimate, avoiding a wide search at full size.</p>
         </div>
         <PyramidResults results={multiScaleResults} group="pyramid" />
       </section>
@@ -219,9 +219,8 @@ export default function ProjectOne({ onBack }) {
         <div className="cs180-section-number">05</div>
         <div className="cs180-section-copy">
           <h2>Limitations and observations</h2>
-          <p>The single-scale search can only recover shifts within ±15 pixels. The multi-scale approach handles larger displacements by starting at a smaller image size. Alignment does not remove the scan borders, and wrapped edge pixels remain in the saved image even though they are excluded from scoring.</p>
           <p>The Emir photo is where the alignment clearly goes wrong: the red-channel version of his face is shifted far away from the others, creating a separate, displaced outline. The algorithm chose a red offset of (-205, 141), so this is much more than a small colored border.</p>
-          <p>A likely reason is that his clothing looks very different through the red and blue filters. NCC scores the whole comparison region, not just his face, so a shift that scores well overall can still put his face in the wrong place. If the pyramid picks a bad match at the smallest size, the narrow searches at larger sizes may not recover from it. Comparing edges instead of brightness could help the algorithm follow shapes more consistently.</p>
+          <p>A likely reason is that the Emir’s clothing appears bright in one channel and dark in another, making it harder for NCC to find matching patterns. Since NCC compares the entire image region, the shift with the highest score may still leave his face far out of alignment. If that wrong match is chosen at the smallest pyramid level, later steps only search near that estimate and may not correct it. Matching edges instead of brightness could help, since features like the outline of his face stay in the same position across channels when correctly aligned.</p>
         </div>
       </section>
     </article>
