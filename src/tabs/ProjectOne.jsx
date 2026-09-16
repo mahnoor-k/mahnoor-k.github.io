@@ -6,9 +6,9 @@ const singleScaleResults = [
   { name: "Tobolsk", file: "tobolsk", green: "(3, 3)", red: "(3, 6)" },
 ];
 const multiScaleResults = [
-  { name: "Cathedral", file: "cathedral", green: "(2, 5)", red: "(3, 12)" },
-  { name: "Monastery", file: "monastery", green: "(2, -3)", red: "(2, 3)" },
-  { name: "Tobolsk", file: "tobolsk", green: "(3, 3)", red: "(3, 6)" },
+  { name: "Cathedral", file: "cathedral", alignedFile: "pyramid_aligned_cathedral.jpg", green: "(2, 5)", red: "(3, 12)" },
+  { name: "Monastery", file: "monastery", alignedFile: "pyramid_aligned_monastery.jpg", green: "(2, -3)", red: "(2, 3)" },
+  { name: "Tobolsk", file: "tobolsk", alignedFile: "pyramid_aligned_tobolsk.jpg", green: "(3, 3)", red: "(3, 6)" },
   {
     "name": "Church",
     "file": "church",
@@ -100,7 +100,7 @@ const additionalResults = [
 function PyramidResults({ results, group }) {
   return (
     <div className="p1-single-examples">
-      {results.map(({ name, file, green, red }) => (
+      {results.map(({ name, file, green, red, alignedFile }) => (
         <section className="p1-single-example" key={file} aria-labelledby={`${group}-${file}`}>
           <h3 id={`${group}-${file}`}>{name}</h3>
           <div className="p1-single-images">
@@ -114,7 +114,7 @@ function PyramidResults({ results, group }) {
                 <figcaption>Unaligned</figcaption>
               </figure>
               <figure className="cs180-photo-card">
-                <img src={asset(`aligned_${file}.jpg`)} alt={`${name} after multi-scale alignment`} loading="lazy" />
+                <img src={asset(alignedFile ?? `aligned_${file}.jpg`)} alt={`${name} after multi-scale alignment`} loading="lazy" />
                 <figcaption>Aligned · Multi-scale<span className="p1-photo-offsets">Green (x, y): {green}<br />Red (x, y): {red}</span></figcaption>
               </figure>
             </div>
