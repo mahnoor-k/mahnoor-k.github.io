@@ -167,7 +167,6 @@ export default function ProjectOne({ onBack }) {
             <span>[(image1 − mean(image1)) ./ ‖image1 − mean(image1)‖]</span>
             <strong className="p1-dot-product"> · </strong>
             <span>[(image2 − mean(image2)) ./ ‖image2 − mean(image2)‖]</span>
-            <p className="p1-formula-key">The <strong>·</strong> between the brackets is the dot product of the two flattened, normalized images.</p>
           </div>
           <p>Here’s what each part of the formula does. The same steps are applied to both images:</p>
           <ul className="p1-ncc-steps">
