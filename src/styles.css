@@ -1384,3 +1384,6 @@ body.light {
 .cs180-project-one .p1-ncc-steps { margin: 0 0 18px; padding-left: 24px; color: var(--text-secondary); line-height: 1.7; }
 .cs180-project-one .p1-ncc-steps li { margin-bottom: 14px; }
 .cs180-project-one .p1-ncc-steps strong { color: var(--text-primary); }
+
+.cs180-project-one .p1-dot-product { display: inline-block; padding: 0 8px; font-size: 28px; color: var(--accent); vertical-align: middle; }
+.cs180-project-one .p1-formula .p1-formula-key { margin: 12px 0 0; font-size: 12px; }

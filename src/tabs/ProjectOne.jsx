@@ -162,7 +162,13 @@ export default function ProjectOne({ onBack }) {
           <h2>Single-scale Alignment</h2>
           <p>For the smaller JPEG images, I try every possible shift within a small area. After splitting the scan into blue, green, and red channels, I keep blue fixed and move green and red separately. Each channel can move up to 15 pixels left, right, up, or down. That gives 31 horizontal positions and 31 vertical positions, or 961 combinations to check. Trying all of them is called <strong>exhaustive search</strong>.</p>
           <p>But how does the algorithm know which shift looks best? I use <strong>normalized cross-correlation (NCC)</strong> to compare the pattern of light and dark areas in the two channels. The same scene can be brighter through one filter than another, so comparing the pixel values directly can be misleading. NCC adjusts for overall brightness and contrast differences before comparing the patterns. The shift with the highest score is the one the algorithm chooses.</p>
-          <p className="p1-formula">normalized_image1 = (image1 − mean(image1)) ./ ‖image1 − mean(image1)‖<br />normalized_image2 = (image2 − mean(image2)) ./ ‖image2 − mean(image2)‖<br /><br />NCC = normalized_image1 · normalized_image2</p>
+          <div className="p1-formula" aria-label="NCC equals the dot product of the two flattened, normalized image regions">
+            <strong>NCC = </strong>
+            <span>[(image1 − mean(image1)) ./ ‖image1 − mean(image1)‖]</span>
+            <strong className="p1-dot-product"> · </strong>
+            <span>[(image2 − mean(image2)) ./ ‖image2 − mean(image2)‖]</span>
+            <p className="p1-formula-key">The <strong>·</strong> between the brackets is the dot product of the two flattened, normalized images.</p>
+          </div>
           <p>Here’s what each part of the formula does. The same steps are applied to both images:</p>
           <ul className="p1-ncc-steps">
             <li><strong>mean(image1): find the average brightness.</strong> Add all the pixel values and divide by the number of pixels. This gives a baseline for deciding which parts are light or dark.</li>
