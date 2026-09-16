@@ -1,6 +1,8 @@
+import ProjectOne from "./ProjectOne.jsx";
 import { useEffect, useState } from "react";
 
 const projects = [
+  { id: 1, title: "Images of the Russian Empire", status: "In progress" },
   { id: 0, title: "Becoming Friends with Your Camera", status: "In progress" },
 ];
 
@@ -151,6 +153,8 @@ export default function CS180Tab() {
     window.location.hash = "#/cs180";
     setSelectedProject(null);
   };
+
+  if (selectedProject === 1) return <ProjectOne onBack={showPortfolio} />;
 
   if (selectedProject === 0) return <ProjectZero onBack={showPortfolio} />;
 

@@ -17,6 +17,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState(() =>
     window.location.hash.startsWith("#/cs180") ? "CS 180" : "Home"
   );
+  const [routeHash, setRouteHash] = useState(() => window.location.hash);
   const [theme, setTheme] = useState("dark");
   const [showTerminal, setShowTerminal] = useState(() =>
     !window.location.hash.startsWith("#/cs180")
@@ -28,6 +29,7 @@ export default function App() {
 
   useEffect(() => {
     const handleHashChange = () => {
+      setRouteHash(window.location.hash);
       if (window.location.hash.startsWith("#/cs180")) {
         setActiveTab("CS 180");
         setShowTerminal(false);
@@ -68,6 +70,23 @@ export default function App() {
 
   const isPortfolio = activeTab === "CS 180";
   const terminalVisible = !isPortfolio || showTerminal;
+  const isProjectReport = isPortfolio && /^#\/cs180\/project-(0|1)$/.test(routeHash);
+
+  if (isProjectReport) {
+    return (
+      <div className={`app ${theme} report-reading-view`}>
+        <div className="report-reading-container">
+          <nav className="report-reading-nav" aria-label="Report navigation">
+            <a href="#/cs180">← CS 180 projects</a>
+            <button className="theme-toggle" onClick={toggleTheme} aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}>
+              {theme === "dark" ? "☀️" : "🌙"}
+            </button>
+          </nav>
+          <main><CS180Tab /></main>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`app ${theme}`} style={{ minHeight: '100vh', padding: '20px', background: theme === 'dark' ? '#121212' : '#f5f5f5' }}>
